@@ -9,13 +9,16 @@ public class PinCodeRegex {
         if (!Character.isDigit(pincode.charAt(0))) {
             return false;
         }
+        if (!Character.isDigit(pincode.charAt(pincode.length() - 1))) {
+            return false;
+        }
         Pattern pattern = Pattern.compile(PINCODE_PATTERN);
         Matcher matcher = pattern.matcher(pincode);
         return matcher.matches();
     }
 
     public static void main(String[] args) {
-        String pincodeToValidate = "A400088";
+        String pincodeToValidate = "400088B";
 
         if(validatePinCode(pincodeToValidate)){
             System.out.println(pincodeToValidate+ " is valid pincode.");
